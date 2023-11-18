@@ -1,14 +1,51 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
+import reportWebVitals from './reportWebVitals';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Home from './pages/Home';
+import Product from './pages/Product';
+import Breakfast from './pages/Breakfast';
+import Breakfast1 from './pages/breakfast1';
+import Breakfast2 from './pages/Breakfast2';
+import Breakfast3 from './pages/Breakfast3';
+import { ThemeProvider } from './hook/hookcooking';
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    // element: <Home/>,
+    element: <Home/>,
+
+    errorElement: <h1> bye bye</h1>,
+  }
+  ,
+  {
+    path:"/product",
+    element:<Product/>
+  }
+  ,{
+    path:"/breakfast",
+    element:<Breakfast/>
+  } ,{
+    path:"/breakfast1",
+    element:<Breakfast1/>
+  },{
+    path:"breakfast2",
+    element:<Breakfast2/>
+  },{
+    path:"breakfast3",
+    element:<Breakfast3/>
+  }
+])
+
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+<ThemeProvider>
+ <RouterProvider router={router}/>
+</ThemeProvider>
+
 );
 
 // If you want to start measuring performance in your app, pass a function
